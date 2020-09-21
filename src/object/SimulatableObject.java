@@ -3,8 +3,7 @@ package object;
 public abstract class SimulatableObject {
 
     // 状態変数
-    protected final double x0, y0;
-    protected double x, y;
+    protected Pos pos;
 
     public SimulatableObject(double x0, double y0) {
         /**
@@ -12,10 +11,7 @@ public abstract class SimulatableObject {
         * @param x0 初期座標(x)
         * @param y0 初期座標(y)
         */
-        this.x0 = x0;
-        this.y0 = y0;
-        this.x = x0;
-        this.y = y0;
+        this.pos = new Pos(x0, y0);
     }
 
 }
