@@ -14,4 +14,12 @@ public abstract class SimulatableObject {
         this.pos = new Pos(x0, y0);
     }
 
+    public Pos getPos() {
+        /**
+         * 座標情報を返す
+         * @return Pos
+         */
+        return pos;
+    }
+
 }
