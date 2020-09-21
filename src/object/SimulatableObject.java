@@ -25,7 +25,7 @@ public abstract class SimulatableObject {
         return pos;
     }
 
-    /* シミュレートを1ステップ進める */
+    /* シミュレートを1ステップ進める (※0.01(10^-2)ms単位) */
     public abstract void step();
 
     /* 状態のリセットを行う */
