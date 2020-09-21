@@ -15,6 +15,16 @@ public class Simulator {
         objectList = new HashMap<String, SimulatableObject>();
     }
 
+    /**
+     * シミュレートを進める
+     * @param time 進める時間 [10^-2s]
+     */
+    public void step(int time) {
+        for(SimulatableObject obj: objectList.values()) {
+            obj.step(time);
+        }
+    }
+
     /* オブジェクトリストを返す */
     public HashMap<String, SimulatableObject> getObjectList() {
         return objectList;
