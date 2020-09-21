@@ -4,7 +4,7 @@ public class Ball extends SimulatableObject {
 
     // 状態変数
     public final double r;
-    private double dx = 0.0, dy = 0.0;  // [m]
+    private double dvx = 0.0, dvy = 0.0, dax = 0.0, day = 0.0;  // [m]
 
     /**
      * Ballのコンストラクタ
@@ -22,7 +22,9 @@ public class Ball extends SimulatableObject {
      * @param num 1度に進めるステップ数
      */
     public void step(int num) {
-        pos.updatePos(dx*num, dy*num);
+        pos.updatePos(dvx*num + 0.5*dax*num*num, dvy*num + 0.5*day*num*num);
+        dvx += dax * num;
+        dvy += day * num;
     }
 
     /* 状態をリセットする */
@@ -36,11 +38,19 @@ public class Ball extends SimulatableObject {
      * @param vy y方向の速度 [m/s]
      */
     public void giveVelocity(double vx, double vy) {
-        dx = vx / 100.0;
-        dy = vy / 100.0;
+        dvx = vx / 100.0;
+        dvy = vy / 100.0;
     }
 
-    /* !!未実装メソッド!! */
-    public void force(double fx, double fy) {}
+    /**
+     * 力を加える
+     * @param fx x方向の力 [N]
+     * @param fy y方向の力 [N]
+     */
+    public void force(double fx, double fy) {
+        // ma = f
+        dax = fx / weight / 10000.0;
+        day = fy / weight / 100.0;
+    }
 
 }
