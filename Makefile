@@ -15,7 +15,7 @@ JAVAC_OPTS := $(OPTS) -sourcepath src -d bin
 
 # コマンド
 run: Main.class
-	$(JAVA) $(JAVA_OPTS) src.Main $(ARGS)
+	$(JAVA) $(JAVA_OPTS) Main $(ARGS)
 
 Main.class: $(SRCS)
 	$(JAVAC) $(JAVAC_OPTS) src/Main.java
