@@ -7,7 +7,7 @@ public class Pos {
     public double x, y;         // [m]
     public final double x0, y0; // [m]
 
-    // 状態変数
+    // 状態変数(TODO: 速度を取得できるようにする)
     private double recentDx = 0.0, recentDy = 0.0;
 
     /* Posのコンストラクタ */
