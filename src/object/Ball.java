@@ -18,9 +18,11 @@ public class Ball extends SimulatableObject {
         this.r = r;
     }
 
-    /* シミュレートを1ステップ進める */
-    public void step() {
-        pos.updatePos(dx, dy);
+    /** シミュレートを1ステップ進める (※0.01(10^-2)ms単位)
+     * @param num 1度に進めるステップ数
+     */
+    public void step(int num) {
+        pos.updatePos(dx*num, dy*num);
     }
 
     /* 状態をリセットする */

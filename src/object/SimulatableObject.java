@@ -25,8 +25,10 @@ public abstract class SimulatableObject {
         return pos;
     }
 
-    /* シミュレートを1ステップ進める (※0.01(10^-2)ms単位) */
-    public abstract void step();
+    /** シミュレートを1ステップ進める (※0.01(10^-2)ms単位)
+     * @param num 1度に進めるステップ数
+     */
+    public abstract void step(int num);
 
     /* 状態のリセットを行う */
     public abstract void reset();

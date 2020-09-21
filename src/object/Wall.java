@@ -19,7 +19,7 @@ public class Wall extends SimulatableObject {
     }
 
     /* 操作必要なし */
-    public void step() {}
+    public void step(int num) {}
     public void reset() {}
     public void giveVelocity(double vx, double vy) {}
     public void force(double fx, double fy) {}
