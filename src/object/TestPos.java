@@ -11,6 +11,7 @@ public class TestPos extends Test {
     public void test() {
         initializeTest();
         changeValTest();
+        resetTest();
     }
 
     /* 初期化テスト */
@@ -32,6 +33,16 @@ public class TestPos extends Test {
             isEqual(pos.x, correctX[cnt]);
             isEqual(pos.y, correctY[cnt]);
         }
+    }
+
+    /* リセットテスト */
+    private void resetTest() {
+        Pos pos = new Pos(100, 100);
+        pos.x = 200;
+        pos.y = 300;
+        pos.reset();
+        isEqual(pos.x, 100.0);
+        isEqual(pos.y, 100.0);
     }
 
 }
