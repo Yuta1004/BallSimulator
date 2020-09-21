@@ -18,17 +18,17 @@ public class Pos {
         this.y0 = y;
     }
 
-    /* ゲッター */
-    public double getX() { return x; };
-    public double getY() { return y; };
-    public double getVx() { return recentVx; }
-    public double getVy() { return recentVy; }
-
     /* 座標をリセットする */
     public void reset() {
         x = x0;
         y = y0;
     }
+
+    /* ゲッター */
+    public double getX() { return x; };
+    public double getY() { return y; };
+    public double getVx() { return recentVx; }
+    public double getVy() { return recentVy; }
 
     /**
      * 座標を更新する

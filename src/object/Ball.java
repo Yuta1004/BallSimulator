@@ -18,6 +18,11 @@ public class Ball extends SimulatableObject {
         this.r = r;
     }
 
+    /* 状態をリセットする */
+    public void reset() {
+        pos.reset();
+    }
+
     /** シミュレートを進める (※0.01(10^-2)s単位)
      * @param time 進める時間 [10^-2s]
      */
@@ -25,11 +30,6 @@ public class Ball extends SimulatableObject {
         pos.updatePos(dvx*time + 0.5*dax*time*time, dvy*time + 0.5*day*time*time, time);
         dvx += dax * time;
         dvy += day * time;
-    }
-
-    /* 状態をリセットする */
-    public void reset() {
-        pos.reset();
     }
 
     /**

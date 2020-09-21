@@ -25,13 +25,13 @@ public abstract class SimulatableObject {
         return pos;
     }
 
+    /* 状態のリセットを行う */
+    public abstract void reset();
+
     /** シミュレートを進める (※0.01(10^-2)s単位)
      * @param time 進める時間 [10^-2s]
      */
     public abstract void step(int time);
-
-    /* 状態のリセットを行う */
-    public abstract void reset();
 
     /**
      * 速度を与える
