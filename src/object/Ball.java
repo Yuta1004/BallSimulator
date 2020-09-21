@@ -38,8 +38,8 @@ public class Ball extends SimulatableObject {
      * @param vy y方向の速度 [m/s]
      */
     public void giveVelocity(double vx, double vy) {
-        dvx = vx / 100.0;
-        dvy = vy / 100.0;
+        dvx += vx / 100.0;
+        dvy += vy / 100.0;
     }
 
     /**
