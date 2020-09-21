@@ -15,10 +15,10 @@ public class MyClassLoader {
          * @param targetPackage パッケージ指定
          * @return クラスを詰めたArrayList
          */
-        targetPackage = targetPackage.replace("/", ".");
+        final String pack = targetPackage.replace("/", ".");
 
         // リソース全取得
-        Enumeration<URL> enu = getAllResources(targetPackage);
+        Enumeration<URL> enu = getAllResources(pack);
         if(enu == null) {
             return new ArrayList<Class<?>>();
         }
@@ -27,7 +27,6 @@ public class MyClassLoader {
         ArrayList<Class<?>> classList = new ArrayList<Class<?>>();
 
         // すべてのリソースについて調べる
-        final String targetPackagef = targetPackage;
         enu.asIterator().forEachRemaining(url -> {
             // 走査準備
             File dir = new File(url.getPath());
@@ -36,13 +35,12 @@ public class MyClassLoader {
             for(String path : dir.list()) {
                 if(path.endsWith(".class")) {   // .classファイル発見
                     try {
-                        classList.add(Class.forName(targetPackagef+"."+path.substring(0, path.length()-6)));
+                        classList.add(Class.forName(pack+"."+path.substring(0, path.length()-6)));
                     } catch (ClassNotFoundException e){}
                 }
             }
         });
         return classList;
-
     }
 
     private static Enumeration<URL> getAllResources(String targetPackage) {
