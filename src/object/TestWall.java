@@ -14,7 +14,7 @@ public class TestWall extends Test {
 
     /* 初期化テスト */
     private void initializeTest() {
-        new Wall(0, 0, 1.0, 1.0, 1.0);
+        new Wall(0, 0, 1.0, 1.0);
         isTrue(true);
     }
 

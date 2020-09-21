@@ -11,10 +11,9 @@ public class Wall extends SimulatableObject {
      * @param y0 初期座標(y) [m]
      * @param width 横幅 [m]
      * @param height 縦幅 [m]
-     * @param weight 質量 [kg]
      */
-    public Wall(double x0, double y0, double width, double height, double weight) {
-        super(x0, y0, weight);
+    public Wall(double x0, double y0, double width, double height) {
+        super(x0, y0, 0.0);
         this.width = width;
         this.height = height;
     }
