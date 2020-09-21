@@ -2,14 +2,14 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-// import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-// import javafx.collections.ObservableList;
+import javafx.collections.ObservableList;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,7 +44,7 @@ public class MainUIController implements Initializable {
 
         // その他色々初期化
         initUI();
-        initChart();
+        initChart(false);
     }
 
     /* UI初期化 */
@@ -59,23 +59,26 @@ public class MainUIController implements Initializable {
         widthF.textProperty().addListener((obs, oldText, newText) -> {
             Double.parseDouble(newText);
             widthFVal = Parse.parseDouble(newText, 0.0);
+            initChart(true);
         });
         widthT.textProperty().addListener((obs, oldText, newText) -> {
             widthTVal = Parse.parseDouble(newText, 0.0);
+            initChart(true);
         });
         heightF.textProperty().addListener((obs, oldText, newText) -> {
             heightFVal = Parse.parseDouble(newText, 0.0);
+            initChart(true);
         });
         heightT.textProperty().addListener((obs, oldText, newText) -> {
             heightTVal = Parse.parseDouble(newText, 0.0);
+            initChart(true);
         });
     }
 
     /**
      * ScatterChart初期化
      */
-    // private void initChart(boolean takeover) {
-    private void initChart() {
+    private void initChart(boolean takeover) {
         // NumberAxis初期化
         // axisNormalize();
         NumberAxis xAxis = new NumberAxis();
@@ -91,26 +94,17 @@ public class MainUIController implements Initializable {
         yAxis.setLowerBound(heightFVal);
         yAxis.setUpperBound(heightTVal);
 
-        // 拡大率セット
-        // double scaleX = 500.0/(widthTVal-widthFVal);
-        // double scaleY = 500.0/(heightTVal-heightFVal);
-        // if(chart != null) {
-        //     ObservableList<XYChart.Series<Number, Number>> series = chart.getData();
-        //     for(XYChart.Series s: series)
-        //         setChartScale(s, scaleX, scaleY);
-        // }
-
         // データ保存
-        // ObservableList<XYChart.Data<Number, Number>> tmp = null;
-        // if(takeover && chart != null)
-        //    tmp = chart.getData();
+        ObservableList<XYChart.Series<Number, Number>> tmp = null;
+        if(takeover && chart != null)
+           tmp = chart.getData();
 
         // Chart設定
         chart = new ScatterChart<Number, Number>(xAxis, yAxis);
         chart.setLegendVisible(false);
         chart.setAnimated(false);
-        // if(takeover)
-        //     chart.setData(tmp);
+        if(takeover)
+            chart.setData(tmp);
 
         // 配置
         AnchorPane.setTopAnchor(chart, 0.0);
