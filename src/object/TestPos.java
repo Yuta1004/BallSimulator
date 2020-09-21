@@ -30,8 +30,8 @@ public class TestPos extends Test {
         Pos pos = new Pos(100, 100);
         for(int cnt = 0; cnt < 5; ++ cnt) {
             pos.updatePos(changesX[cnt], changesY[cnt]);
-            isEqual(pos.x, correctX[cnt]);
-            isEqual(pos.y, correctY[cnt]);
+            isEqual(pos.getX(), correctX[cnt]);
+            isEqual(pos.getY(), correctY[cnt]);
         }
     }
 
@@ -46,11 +46,10 @@ public class TestPos extends Test {
     /* リセットテスト */
     private void resetTest() {
         Pos pos = new Pos(100, 100);
-        pos.x = 200;
-        pos.y = 300;
+        pos.updatePos(10, 10);
         pos.reset();
-        isEqual(pos.x, 100.0);
-        isEqual(pos.y, 100.0);
+        isEqual(pos.getX(), 100.0);
+        isEqual(pos.getY(), 100.0);
     }
 
 }

@@ -4,8 +4,8 @@ package object;
 public class Pos {
 
     // 座標用変数
-    public double x, y;         // [m]
-    public final double x0, y0; // [m]
+    private double x, y;         // [m]
+    private final double x0, y0; // [m]
 
     // 状態変数(TODO: 速度を取得できるようにする)
     private double recentDx = 0.0, recentDy = 0.0;
@@ -17,6 +17,10 @@ public class Pos {
         this.x0 = x;
         this.y0 = y;
     }
+
+    /* ゲッター */
+    public double getX() { return x; };
+    public double getY() { return y; };
 
     /* 座標をリセットする */
     public void reset() {
