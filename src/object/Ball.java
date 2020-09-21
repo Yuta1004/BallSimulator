@@ -28,8 +28,17 @@ public class Ball extends SimulatableObject {
         pos.reset();
     }
 
+    /**
+     * 速度を与える
+     * @param vx x方向の速度 [m/s]
+     * @param vy y方向の速度 [m/s]
+     */
+    public void giveVelocity(double vx, double vy) {
+        dx = vx / 100.0;
+        dy = vy / 100.0;
+    }
+
     /* !!未実装メソッド!! */
-    public void giveVelocity(double vx, double vy) {}
     public void force(double fx, double fy) {}
 
 }
