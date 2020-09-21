@@ -2,9 +2,14 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+// import javafx.scene.chart.XYChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+// import javafx.collections.ObservableList;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +20,8 @@ public class MainUIController implements Initializable {
 
     // UI部品
     @FXML
+    private AnchorPane chartPane;
+    @FXML
     private Slider speedSlider;
     @FXML
     private Label speedVal;
@@ -22,6 +29,7 @@ public class MainUIController implements Initializable {
     private TextField widthF, widthT, heightF, heightT;
 
     // 描画用
+    private ScatterChart<Number, Number> chart;
     private double updateSpeed;
     private double widthFVal, widthTVal, heightFVal, heightTVal;
 
@@ -36,6 +44,7 @@ public class MainUIController implements Initializable {
 
         // その他色々初期化
         initUI();
+        initChart();
     }
 
     /* UI初期化 */
@@ -60,6 +69,56 @@ public class MainUIController implements Initializable {
         heightT.textProperty().addListener((obs, oldText, newText) -> {
             heightTVal = Parse.parseDouble(newText, 0.0);
         });
+    }
+
+    /**
+     * ScatterChart初期化
+     */
+    // private void initChart(boolean takeover) {
+    private void initChart() {
+        // NumberAxis初期化
+        // axisNormalize();
+        NumberAxis xAxis = new NumberAxis();
+        NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Distance(m)");
+        xAxis.setAutoRanging(false);
+        xAxis.setTickUnit((widthTVal-widthFVal)/20);
+        xAxis.setLowerBound(widthFVal);
+        xAxis.setUpperBound(widthTVal);
+        yAxis.setLabel("Height(m)");
+        yAxis.setAutoRanging(false);
+        yAxis.setTickUnit((heightTVal-heightFVal)/20);
+        yAxis.setLowerBound(heightFVal);
+        yAxis.setUpperBound(heightTVal);
+
+        // 拡大率セット
+        // double scaleX = 500.0/(widthTVal-widthFVal);
+        // double scaleY = 500.0/(heightTVal-heightFVal);
+        // if(chart != null) {
+        //     ObservableList<XYChart.Series<Number, Number>> series = chart.getData();
+        //     for(XYChart.Series s: series)
+        //         setChartScale(s, scaleX, scaleY);
+        // }
+
+        // データ保存
+        // ObservableList<XYChart.Data<Number, Number>> tmp = null;
+        // if(takeover && chart != null)
+        //    tmp = chart.getData();
+
+        // Chart設定
+        chart = new ScatterChart<Number, Number>(xAxis, yAxis);
+        chart.setLegendVisible(false);
+        chart.setAnimated(false);
+        // if(takeover)
+        //     chart.setData(tmp);
+
+        // 配置
+        AnchorPane.setTopAnchor(chart, 0.0);
+        AnchorPane.setLeftAnchor(chart, 0.0);
+        AnchorPane.setRightAnchor(chart, 20.0);
+        AnchorPane.setBottomAnchor(chart, 0.0);
+        chartPane.getChildren().clear();
+        chartPane.getChildren().add(chart);
     }
 
 }
