@@ -24,4 +24,13 @@ public class Pos {
         x = x0;
         y = y0;
     }
+
+    public boolean equals(Object pos) {
+        /**
+         * 比較用
+         */
+        if(!(pos instanceof Pos)) return false;
+        Pos posn = (Pos)pos;
+        return x == posn.x && y == posn.y;
+    }
 }
