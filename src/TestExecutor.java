@@ -9,7 +9,8 @@ class TestExecutor {
         Test allTests[] = {
             // new TestSample()
             new TestPos(),
-            new TestBall()
+            new TestBall(),
+            new TestWall()
         };
         for(Test test: allTests) {
             test.test();
