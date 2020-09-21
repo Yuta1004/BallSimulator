@@ -62,7 +62,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="widthT" alignment="CENTER_RIGHT" prefWidth="70.0" text="1500" />
+                        <TextField fx:id="widthT" alignment="CENTER_RIGHT" prefWidth="70.0" text="25" />
                         <Label text="m">
                            <font>
                               <Font size="20.0" />
@@ -83,7 +83,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="heightT" alignment="CENTER_RIGHT" prefWidth="70.0" text="725" />
+                        <TextField fx:id="heightT" alignment="CENTER_RIGHT" prefWidth="70.0" text="10" />
                         <Label text="m">
                            <font>
                               <Font size="20.0" />
