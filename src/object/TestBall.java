@@ -27,26 +27,14 @@ public class TestBall extends Test {
         ball.step(100); // 100*10ms = 1s
         isEqual(ball.getPos(), new Pos(10.0, 0.0));   // ※誤差
 
-        // 状況2: 初期座標(0, 0)に静止している質量1.0kgの球に横向き10Nの力を与える
+        // 状況2: 横向き10m/sで移動している質量1.0gの球が座標(0,0)に来たときに横向き10Nの力を与える
         ball = new Ball(0, 0, 1.0, 1.0);
+        ball.giveVelocity(10.0, 0);
         ball.force(10.0, 0);
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(5.0, 0.0));
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(20.0, 0.0));
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(45.0, 0.0));
-
-        // 状況3: 横向き10m/sで移動している質量1.0gの球が座標(0,0)に来たときに横向き10Nの力を与える
-        ball = new Ball(0, 0, 1.0, 1.0);
-        ball.giveVelocity(10.0, 0.0);
-        ball.force(10.0, 0);
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(15.0, 0.0));
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(40.0, 0.0));
-        ball.step(100); // 100*10ms = 1s
-        isEqual(ball.getPos(), new Pos(75.0, 0.0));
+        for(int cnt = 1; cnt <= 10; ++ cnt) {
+            ball.step(100);
+            isEqual(ball.getPos(), new Pos(10*cnt + 0.5*10*cnt*cnt, 0));
+        }
     }
 
 }
