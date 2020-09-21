@@ -15,13 +15,13 @@ public class TestBall extends Test {
 
     /* 初期化テスト */
     private void initializeTest() {
-        new Ball(0, 0, 1.0);
+        new Ball(0, 0, 1.0, 1.0);
         isTrue(true);
     }
 
     /* stepのテスト */
     private void stepTest() {
-        Ball ball = new Ball(0, 0, 1.0);
+        Ball ball = new Ball(0, 0, 1.0, 1.0);
         for(int cnt = 0; cnt < 10; ++ cnt) {
             ball.step();
             isEqual(ball.getPos(), new Pos(0, 0));
