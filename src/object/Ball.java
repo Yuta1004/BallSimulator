@@ -20,8 +20,7 @@ public class Ball extends SimulatableObject {
 
     /* シミュレートを1ステップ進める */
     public void step() {
-        pos.x += dx;
-        pos.y += dy;
+        pos.updatePos(dx, dy);
     }
 
     /* 状態をリセットする */
