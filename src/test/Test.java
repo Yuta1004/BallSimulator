@@ -12,9 +12,7 @@ public abstract class Test {
         this.name = name;
     }
 
-    abstract void test();
-    /**
-     * テストを記述するメソッド
-     */
+    /* テストを記述するメソッド */
+    public abstract void test();
 
 }
