@@ -15,6 +15,11 @@ public class Simulator {
         objectList = new HashMap<String, SimulatableObject>();
     }
 
+    /* オブジェクトリストを返す */
+    public HashMap<String, SimulatableObject> getObjectList() {
+        return objectList;
+    }
+
     /**
      * オブジェクト追加(ID自動指定)
      * @param obj 追加オブジェクト
