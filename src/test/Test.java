@@ -75,4 +75,13 @@ public abstract class Test {
         }
     }
 
+    protected void fail(String msg) {
+        /**
+         * 強制的にテストを失敗させる
+         * @param msg メッセージ
+         */
+        ++ cnt[FAILED];
+        printFailedOn();
+        System.err.println("\t"+msg);
+    }
 }

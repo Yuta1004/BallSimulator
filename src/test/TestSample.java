@@ -13,6 +13,7 @@ public class TestSample extends Test {
         isTrue(false);
         isFalse(false);
         isFalse(true);
+        fail("Test being made force to false!");
     }
 
 }
