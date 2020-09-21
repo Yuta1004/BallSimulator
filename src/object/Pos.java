@@ -4,8 +4,8 @@ package object;
 public class Pos {
 
     // 座標用変数
-    public double x, y;
-    public final double x0, y0;
+    public double x, y;         // [m]
+    public final double x0, y0; // [m]
 
     public Pos(double x, double y) {
         /**
