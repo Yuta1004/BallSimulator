@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import object.SimulatableObject;
 
-public abstract class Simulator {
+public class Simulator {
 
     // オブジェクト管理用
     private HashMap<String, SimulatableObject> objectList;

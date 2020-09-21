@@ -1,6 +1,7 @@
 import test.Test;
 // import test.TestSample;
 import object.*;
+import simulator.*;
 
 class TestExecutor {
 
@@ -10,7 +11,8 @@ class TestExecutor {
             // new TestSample()
             new TestPos(),
             new TestBall(),
-            new TestWall()
+            new TestWall(),
+            new TestSimulator()
         };
         for(Test test: allTests) {
             test.test();
