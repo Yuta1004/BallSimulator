@@ -8,9 +8,9 @@ public abstract class SimulatableObject {
 
     /**
     * オブジェクト情報の初期化
-    * @param x0 初期座標(x)
-    * @param y0 初期座標(y)
-    * @param wiehgt 質量[kg]
+    * @param x0 初期座標(x) [m]
+    * @param y0 初期座標(y) [m]
+    * @param wiehgt 質量 [kg]
     */
     public SimulatableObject(double x0, double y0, double weight) {
         this.pos = new Pos(x0, y0);
