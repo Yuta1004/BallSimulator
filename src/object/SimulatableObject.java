@@ -22,4 +22,10 @@ public abstract class SimulatableObject {
         return pos;
     }
 
+    /* シミュレートを1ステップ進める */
+    public abstract void step();
+
+    /* 状態のリセットを行う */
+    public abstract void reset();
+
 }

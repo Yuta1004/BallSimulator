@@ -11,4 +11,19 @@ public class Ball extends SimulatableObject {
         super(x0, y0);
     }
 
+    public void step() {
+        /**
+         * シミュレートを1ステップ進める
+         */
+        ++ pos.x;
+        ++ pos.y;
+    }
+
+    public void reset() {
+        /**
+         * 状態をリセットする
+         */
+        pos.reset();
+    }
+
 }
