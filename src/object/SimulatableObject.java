@@ -31,4 +31,10 @@ public abstract class SimulatableObject {
     /* 状態のリセットを行う */
     public abstract void reset();
 
+    /* 速度を与える */
+    public abstract void giveVelocity(double vx, double vy);
+
+    /* 力を加える */
+    public abstract void force(double fx, double fy);
+
 }

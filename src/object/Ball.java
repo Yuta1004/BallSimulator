@@ -27,4 +27,8 @@ public class Ball extends SimulatableObject {
         pos.reset();
     }
 
+    /* 未実装メソッド */
+    public void giveVelocity(double vx, double vy) {}
+    public void force(double fx, double fy) {}
+
 }
