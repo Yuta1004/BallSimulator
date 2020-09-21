@@ -5,10 +5,10 @@ JAVAC := javac
 # JLINK := $(JAVA_HOME)/bin/jlink
 
 SRCS := $(wildcard *.java */*.java)
-# JAVAFX_MODULES := javafx.controls,javafx.base,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web
+JAVAFX_MODULES := javafx.controls,javafx.base,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web
 
 ARGS =
-# OPTS := -p $(JAVAFX_PATH)/lib --add-modules $(JAVAFX_MODULES)
+OPTS := -p $(JAVAFX_PATH)/lib --add-modules $(JAVAFX_MODULES)
 JAVA_OPTS := $(OPTS) -classpath bin
 JAVAC_OPTS := $(OPTS) -sourcepath src -d bin
 # JLINK_OPTS := --compress=2 --add-modules $(JAVAFX_MODULES) --module-path $(JAVAFX_PATH)/jmods
