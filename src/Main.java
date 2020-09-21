@@ -1,12 +1,9 @@
-import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.net.URL;
 import java.net.URLClassLoader;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
