@@ -17,8 +17,11 @@ JAVAC_OPTS := $(OPTS) -sourcepath src -d bin
 run: Main.class
 	$(JAVA) $(JAVA_OPTS) Main $(ARGS)
 
-Main.class: $(SRCS)
-	$(JAVAC) $(JAVAC_OPTS) src/Main.java
+test: TestExecutor.class
+	$(JAVA) $(JAVA_OPTS) TestExecutor $(ARGS)
+
+%.class: $(SRCS)
+	$(JAVAC) $(JAVAC_OPTS) src/$*.java
 
 clean:
 	rm -rf bin dist **/*.args
