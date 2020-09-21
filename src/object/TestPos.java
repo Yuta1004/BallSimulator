@@ -28,7 +28,7 @@ public class TestPos extends Test {
         double correctY[] = {177, 114, 101, 155, 103};
         Pos pos = new Pos(100, 100);
         for(int cnt = 0; cnt < 5; ++ cnt) {
-            pos.updatePos(changesX[cnt], changesY[cnt]);
+            pos.updatePos(changesX[cnt], changesY[cnt], 100);
             isEqual(pos.getX(), correctX[cnt]);
             isEqual(pos.getY(), correctY[cnt]);
         }
@@ -37,7 +37,7 @@ public class TestPos extends Test {
     /* リセットテスト */
     private void resetTest() {
         Pos pos = new Pos(100, 100);
-        pos.updatePos(10, 10);
+        pos.updatePos(10, 10, 100);
         pos.reset();
         isEqual(pos.getX(), 100.0);
         isEqual(pos.getY(), 100.0);

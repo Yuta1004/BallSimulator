@@ -34,11 +34,13 @@ public class Pos {
      * 座標を更新する
      * @param dx 変更量(x) [m]
      * @param dy 変更量(y) [m]
+     * @param time 変更するのにかけた時間 (10^-2s)
      */
-    public void updatePos(double dx, double dy) {
+    public void updatePos(double dx, double dy, int time) {
         x += dx;
         y += dy;
-        // TODO: recentVx, recentVyの更新
+        recentVx = dx / (time / 100.0);
+        recentVy = dy / (time / 100.0);
     }
 
     /* 比較用 */

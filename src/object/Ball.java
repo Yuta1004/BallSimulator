@@ -22,7 +22,7 @@ public class Ball extends SimulatableObject {
      * @param time 進める時間 [10^-2s]
      */
     public void step(int time) {
-        pos.updatePos(dvx*time + 0.5*dax*time*time, dvy*time + 0.5*day*time*time);
+        pos.updatePos(dvx*time + 0.5*dax*time*time, dvy*time + 0.5*day*time*time, time);
         dvx += dax * time;
         dvy += day * time;
     }
