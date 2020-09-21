@@ -102,12 +102,12 @@ public class MainUIController implements Initializable {
         // axisNormalize();
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Distance(m)");
+        xAxis.setLabel("X(m)");
         xAxis.setAutoRanging(false);
         xAxis.setTickUnit((widthTVal-widthFVal)/20);
         xAxis.setLowerBound(widthFVal);
         xAxis.setUpperBound(widthTVal);
-        yAxis.setLabel("Height(m)");
+        yAxis.setLabel("Y(m)");
         yAxis.setAutoRanging(false);
         yAxis.setTickUnit((heightTVal-heightFVal)/20);
         yAxis.setLowerBound(heightFVal);
