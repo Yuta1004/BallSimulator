@@ -1,17 +1,17 @@
 package simulator;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import object.SimulatableObject;
 
 public abstract class Simulator {
 
     // オブジェクト管理用
-    private ArrayList<SimulatableObject> objectList;
+    private HashMap<String, SimulatableObject> objectList;
 
     /* コンストラクタ */
     public Simulator() {
-        objectList = new ArrayList<SimulatableObject>();
+        objectList = new HashMap<String, SimulatableObject>();
     }
 
 }
