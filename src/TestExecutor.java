@@ -1,6 +1,6 @@
 import test.Test;
 // import test.TestSample;
-import object.TestBall;
+import object.*;
 
 class TestExecutor {
 
@@ -8,6 +8,7 @@ class TestExecutor {
         // テスト実行
         Test allTests[] = {
             // new TestSample()
+            new TestPos(),
             new TestBall()
         };
         for(Test test: allTests) {
