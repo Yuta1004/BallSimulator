@@ -2,13 +2,14 @@ package object;
 
 public class Ball extends SimulatableObject {
 
-    public Ball(double x0, double y0) {
+    public Ball(double x0, double y0, double weight) {
         /**
          * Ballのコンストラクタ
          * @param x0 初期座標(x)
          * @param y0 初期座標(y)
+         * @param weight 質量[kg]
          */
-        super(x0, y0);
+        super(x0, y0, weight);
     }
 
     public void step() {
