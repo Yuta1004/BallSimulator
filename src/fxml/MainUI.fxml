@@ -21,10 +21,9 @@
   <children>
       <MenuBar>
         <menus>
-            <Menu mnemonicParsing="false" text="Others">
+            <Menu mnemonicParsing="false" text="%Others">
                <items>
-                  <MenuItem fx:id="openLog" mnemonicParsing="false" text="ViewLog" />
-                  <MenuItem fx:id="openCredit" mnemonicParsing="false" text="Credit" />
+                  <MenuItem fx:id="openCredit" mnemonicParsing="false" text="%Credit" />
                </items>
             </Menu>
         </menus>
@@ -37,7 +36,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="20.0">
                      <children>
-                        <Label prefWidth="120.0" text="Speed">
+                        <Label prefWidth="120.0" text="%Speed">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -52,7 +51,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="20.0">
                      <children>
-                        <Label prefWidth="120.0" text="Width">
+                        <Label prefWidth="120.0" text="%Width">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -73,7 +72,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="20.0">
                      <children>
-                        <Label prefWidth="120.0" text="Height">
+                        <Label prefWidth="120.0" text="%Height">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -138,22 +137,22 @@
                 <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="init" mnemonicParsing="false" prefWidth="150.0" text="Initialize">
+                  <Button fx:id="init" mnemonicParsing="false" prefWidth="150.0" text="%Initialize">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="reset" mnemonicParsing="false" prefWidth="150.0" text="Reset" GridPane.columnIndex="1">
+                  <Button fx:id="reset" mnemonicParsing="false" prefWidth="150.0" text="%Reset" GridPane.columnIndex="1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="genRock" mnemonicParsing="false" prefWidth="150.0" text="GenRock" GridPane.rowIndex="1">
+                  <Button fx:id="genRock" mnemonicParsing="false" prefWidth="150.0" text="%AddBall" GridPane.rowIndex="1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="openSettings" mnemonicParsing="false" prefWidth="150.0" text="Settings" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="openSettings" mnemonicParsing="false" prefWidth="150.0" text="%Settings" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="22.0" />
                      </font>
