@@ -1,6 +1,8 @@
 package simulator;
 
 import test.Test;
+import object.Ball;
+import object.SimulatableObject;
 
 public class TestSimulator extends Test {
 
@@ -11,6 +13,7 @@ public class TestSimulator extends Test {
 
     public void test() {
         initialzeTest();
+        addObjectTest();
     }
 
     /* 初期化テスト */
@@ -19,4 +22,13 @@ public class TestSimulator extends Test {
         isTrue(true);
     }
 
+    /* オブジェクト追加テスト */
+    public void addObjectTest() {
+        Simulator simulator = new Simulator();
+        SimulatableObject ball1 = new Ball(0.0, 0.0, 1.0, 1.0);
+        SimulatableObject ball2 = new Ball(2.0, 2.0, 1.0, 1.0);
+        simulator.addObject(ball1);
+        simulator.addObject("test", ball2);
+        isTrue(true);
+    }
 }
