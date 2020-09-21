@@ -14,6 +14,7 @@ public class TestSimulator extends Test {
     public void test() {
         initialzeTest();
         addObjectTest();
+        removeObjectTest();
     }
 
     /* 初期化テスト */
@@ -29,6 +30,16 @@ public class TestSimulator extends Test {
         SimulatableObject ball2 = new Ball(2.0, 2.0, 1.0, 1.0);
         simulator.addObject(ball1);
         simulator.addObject("test", ball2);
+        isTrue(true);
+    }
+
+    /* オブジェクト削除テスト */
+    public void removeObjectTest() {
+        Simulator simulator = new Simulator();
+        SimulatableObject ball = new Ball(0.0, 0.0, 1.0, 1.0);
+        simulator.addObject(ball);
+        simulator.removeObject("aaa");
+        simulator.removeObject("0");
         isTrue(true);
     }
 }

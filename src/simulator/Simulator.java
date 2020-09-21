@@ -33,4 +33,13 @@ public class Simulator {
         objectList.put(id, obj);
     }
 
+    /**
+     * オブジェクト削除
+     * @param id ID
+     */
+    public void removeObject(String id) {
+        if(objectList.get(id) == null) { return; }
+        objectList.remove(id);
+    }
+
 }
