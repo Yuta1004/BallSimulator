@@ -10,22 +10,19 @@ public abstract class Test {
     public static final int SUCCESS = 0;
     public static final int FAILED = 1;
 
-
+    /**
+     * Testのコンストラクタ
+     * @param name テスト名
+     */
     public Test(String name) {
-        /**
-         * Testのコンストラクタ
-         * @param name テスト名
-         */
         this.name = name;
     }
 
     /* テストを記述するメソッド */
     public abstract void test();
 
+    /* エラー発生箇所を出力する */
     private void printFailedOn() {
-        /**
-         * エラー発生箇所を出力する
-         */
         StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
         int line = ste.getLineNumber();
         String clsName = ste.getClassName();
@@ -33,11 +30,11 @@ public abstract class Test {
         System.err.println("Failed at \""+name+"\" ("+clsName+"."+mtdName+":"+line+")");
     }
 
+    /**
+     * 2つの値が等しいか検査
+     * @param objA, objB 検査対象
+     */
     protected <T> void isEqual(T objA, T objB) {
-        /**
-         * 2つの値等しいか検査
-         * @param objA, objB 検査対象
-         */
         if(objA.equals(objB)) {
             ++ cnt[SUCCESS];
         } else {
@@ -47,11 +44,11 @@ public abstract class Test {
         }
     }
 
+    /**
+     * 値が真かどうか検査
+     * @param val 検査対象
+     */
     protected void isTrue(boolean val) {
-        /**
-         * 値が真かどうか検査
-         * @param val 検査対象
-         */
         if(val) {
             ++ cnt[SUCCESS];
         } else {
@@ -61,11 +58,11 @@ public abstract class Test {
         }
     }
 
+    /**
+     * 値が偽かどうか検査
+     * @param val 検査対象
+     */
     protected void isFalse(boolean val) {
-        /**
-         * 値が偽かどうか検査
-         * @param val 検査対象
-         */
         if(!val) {
             ++ cnt[SUCCESS];
         } else {
@@ -75,11 +72,11 @@ public abstract class Test {
         }
     }
 
+    /**
+     * 強制的にテストを失敗させる
+     * @param msg メッセージ
+     */
     protected void fail(String msg) {
-        /**
-         * 強制的にテストを失敗させる
-         * @param msg メッセージ
-         */
         ++ cnt[FAILED];
         printFailedOn();
         System.err.println("\t"+msg);

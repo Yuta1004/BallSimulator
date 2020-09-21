@@ -7,28 +7,22 @@ public class Pos {
     public double x, y;         // [m]
     public final double x0, y0; // [m]
 
+    /* Posのコンストラクタ */
     public Pos(double x, double y) {
-        /**
-         * Posのコンストラクタ
-         */
         this.x = x;
         this.y = y;
         this.x0 = x;
         this.y0 = y;
     }
 
+    /* 座標をリセットする */
     public void reset() {
-        /**
-         * 座標をリセットする
-         */
         x = x0;
         y = y0;
     }
 
+    /* 比較用 */
     public boolean equals(Object pos) {
-        /**
-         * 比較用
-         */
         if(!(pos instanceof Pos)) return false;
         Pos posn = (Pos)pos;
         return x == posn.x && y == posn.y;
