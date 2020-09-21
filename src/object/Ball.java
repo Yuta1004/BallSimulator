@@ -18,8 +18,8 @@ public class Ball extends SimulatableObject {
         this.r = r;
     }
 
-    /** シミュレートを1ステップ進める (※0.01(10^-2)ms単位)
-     * @param time 1度に進めるステップ数
+    /** シミュレートを進める (※0.01(10^-2)s単位)
+     * @param time 進める時間 [10^-2s]
      */
     public void step(int time) {
         pos.updatePos(dvx*time + 0.5*dax*time*time, dvy*time + 0.5*day*time*time);
