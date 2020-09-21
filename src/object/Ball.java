@@ -19,12 +19,12 @@ public class Ball extends SimulatableObject {
     }
 
     /** シミュレートを1ステップ進める (※0.01(10^-2)ms単位)
-     * @param num 1度に進めるステップ数
+     * @param time 1度に進めるステップ数
      */
-    public void step(int num) {
-        pos.updatePos(dvx*num + 0.5*dax*num*num, dvy*num + 0.5*day*num*num);
-        dvx += dax * num;
-        dvy += day * num;
+    public void step(int time) {
+        pos.updatePos(dvx*time + 0.5*dax*time*time, dvy*time + 0.5*day*time*time);
+        dvx += dax * time;
+        dvy += day * time;
     }
 
     /* 状態をリセットする */

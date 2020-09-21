@@ -26,9 +26,9 @@ public abstract class SimulatableObject {
     }
 
     /** シミュレートを1ステップ進める (※0.01(10^-2)ms単位)
-     * @param num 1度に進めるステップ数
+     * @param time 1度に進めるステップ数
      */
-    public abstract void step(int num);
+    public abstract void step(int time);
 
     /* 状態のリセットを行う */
     public abstract void reset();
