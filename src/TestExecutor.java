@@ -10,7 +10,7 @@ class TestExecutor {
     public static void main(String args[]) {
         // テスト実行
         Test allTests[] = {
-            new TestSample()
+            // new TestSample()
         };
         for(Test test: allTests) {
             test.test();
