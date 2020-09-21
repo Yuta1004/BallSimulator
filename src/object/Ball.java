@@ -2,6 +2,9 @@ package object;
 
 public class Ball extends SimulatableObject {
 
+    // 状態変数
+    private double dx = 0.0, dy = 0.0;  // [m]
+
     /**
      * Ballのコンストラクタ
      * @param x0 初期座標(x)
@@ -14,8 +17,8 @@ public class Ball extends SimulatableObject {
 
     /* シミュレートを1ステップ進める */
     public void step() {
-        ++ pos.x;
-        ++ pos.y;
+        pos.x += dx;
+        pos.y += dy;
     }
 
     /* 状態をリセットする */
