@@ -7,8 +7,8 @@ public class Pos {
     private double x, y;         // [m]
     private final double x0, y0; // [m]
 
-    // 状態変数(TODO: 速度を取得できるようにする)
-    private double recentDx = 0.0, recentDy = 0.0;
+    // 状態変数
+    private double recentVx = 0.0, recentVy = 0.0;
 
     /* Posのコンストラクタ */
     public Pos(double x, double y) {
@@ -21,6 +21,8 @@ public class Pos {
     /* ゲッター */
     public double getX() { return x; };
     public double getY() { return y; };
+    public double getVx() { return recentVx; }
+    public double getVy() { return recentVy; }
 
     /* 座標をリセットする */
     public void reset() {
@@ -36,8 +38,7 @@ public class Pos {
     public void updatePos(double dx, double dy) {
         x += dx;
         y += dy;
-        recentDx = dx;
-        recentDy = dy;
+        // TODO: recentVx, recentVyの更新
     }
 
     /* 比較用 */
