@@ -40,17 +40,6 @@ public class Pos {
         recentDy = dy;
     }
 
-    /** 座標を変更する
-     * @param x 変更先(x) [m]
-     * @param y 変更先(y) [m]
-     */
-    public void changePos(double x, double y) {
-        this.x = x;
-        this.y = y;
-        recentDx = 0.0;
-        recentDy = 0.0;
-    }
-
     /* 比較用 */
     public boolean equals(Object pos) {
         if(!(pos instanceof Pos)) return false;
