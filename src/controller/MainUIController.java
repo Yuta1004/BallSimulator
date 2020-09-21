@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import util.Parse;
 
 public class MainUIController implements Initializable {
 
@@ -15,6 +18,8 @@ public class MainUIController implements Initializable {
     private Slider speedSlider;
     @FXML
     private Label speedVal;
+    @FXML
+    private TextField widthF, widthT, heightF, heightT;
 
     // 描画用
     private double updateSpeed;
@@ -39,6 +44,21 @@ public class MainUIController implements Initializable {
         speedSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             updateSpeed = Math.round(oldVal.doubleValue()*10)/10.0;
             speedVal.setText("x"+updateSpeed);
+        });
+
+        // UIイベント<テキスト入力(1行)>
+        widthF.textProperty().addListener((obs, oldText, newText) -> {
+            Double.parseDouble(newText);
+            widthFVal = Parse.parseDouble(newText, 0.0);
+        });
+        widthT.textProperty().addListener((obs, oldText, newText) -> {
+            widthTVal = Parse.parseDouble(newText, 0.0);
+        });
+        heightF.textProperty().addListener((obs, oldText, newText) -> {
+            heightFVal = Parse.parseDouble(newText, 0.0);
+        });
+        heightT.textProperty().addListener((obs, oldText, newText) -> {
+            heightTVal = Parse.parseDouble(newText, 0.0);
         });
     }
 
