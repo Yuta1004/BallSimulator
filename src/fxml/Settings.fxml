@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
@@ -81,7 +80,6 @@
                                 <rowConstraints>
                                   <RowConstraints prefHeight="40.0" />
                                     <RowConstraints prefHeight="40.0" />
-                                    <RowConstraints prefHeight="40.0" />
                                 </rowConstraints>
                                  <children>
                                     <AnchorPane>
@@ -102,16 +100,6 @@
                                              </font>
                                           </Label>
                                           <CheckBox fx:id="axisNormalize" mnemonicParsing="false" text="%Enable" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane GridPane.rowIndex="2">
-                                       <children>
-                                          <Label layoutX="-10.0" layoutY="1.0" text="%ViscosityValue" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <ChoiceBox fx:id="visChoice" prefWidth="120.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="15.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
