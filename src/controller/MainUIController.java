@@ -90,7 +90,6 @@ public class MainUIController implements Initializable {
 
         // UIイベント<テキスト入力(1行)>
         widthF.textProperty().addListener((obs, oldText, newText) -> {
-            Double.parseDouble(newText);
             widthFVal = Parse.toDouble(newText, 0.0);
             initChart(true);
         });
