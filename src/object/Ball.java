@@ -50,7 +50,7 @@ public class Ball extends SimulatableObject {
     public void force(double fx, double fy) {
         // ma = f
         dax = fx / weight / 10000.0;
-        day = fy / weight / 100.0;
+        day = fy / weight / 10000.0;
     }
 
 }
