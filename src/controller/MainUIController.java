@@ -17,9 +17,14 @@ import javafx.util.Duration;
 import javafx.collections.ObservableList;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import util.Parse;
+import util.Convert;
+import object.Ball;
+import object.SimulatableObject;
+import simulator.Simulator;
 
 public class MainUIController implements Initializable {
 
@@ -40,6 +45,7 @@ public class MainUIController implements Initializable {
     private double updateSpeed;
     private double widthFVal, widthTVal, heightFVal, heightTVal;
     private Timeline tl = new Timeline();
+    private Simulator simulator;
 
     /* 初期化 */
     @Override
@@ -50,9 +56,16 @@ public class MainUIController implements Initializable {
         heightTVal = 10;
         widthFVal = heightFVal = 0;
 
-        // その他色々初期化
+        // UI部品など初期化
         initUI();
         initChart(false);
+
+        // シミュレータ初期化
+        simulator = new Simulator();
+        simulator.addObject(new Ball(0, 0, 1.0, 1.0));
+        simulator.addObject(new Ball(2, 2, 1.0, 1.0));
+        simulator.addObject(new Ball(4, 4, 1.0, 1.0));
+        plotData(simulator.getObjectList().values());
     }
 
     /* UI初期化 */
@@ -144,6 +157,14 @@ public class MainUIController implements Initializable {
         tl = new Timeline(kf);
         tl.setCycleCount(Timeline.INDEFINITE);
         tl.play();
+    }
+
+    /* ScatterChartにデータをセットする */
+    @SuppressWarnings("unchecked")
+    private void plotData(Collection<SimulatableObject> objects) {
+        XYChart.Series<Number, Number> series = Convert.objects2Series(objects);
+        chart.getData().clear();
+        chart.getData().addAll(series);
     }
 
 }
