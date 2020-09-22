@@ -29,6 +29,8 @@ import data.Settings;
 import object.SimulatableObject;
 import simulator.Simulator;
 
+import object.Ball;  // for debug
+
 public class MainUIController implements Initializable {
 
     // UI部品
@@ -71,6 +73,10 @@ public class MainUIController implements Initializable {
 
         // シミュレータ初期化
         simulator = new Simulator();
+        // for debug
+        // Ball ball = new Ball(5.0, 5.0, 1.0, 1.0);
+        // ball.giveVelocity(1.0, 1.0);
+        // simulator.addObject(ball);
         plotData(simulator.getObjectList().values());
     }
 
@@ -156,6 +162,15 @@ public class MainUIController implements Initializable {
         yAxis.setLowerBound(heightFVal);
         yAxis.setUpperBound(heightTVal);
 
+        // 拡大率セット
+        double scaleX = 25.0/(widthTVal-widthFVal);
+        double scaleY = 10.0/(heightTVal-heightFVal);
+        if(chart != null) {
+            ObservableList<XYChart.Series<Number, Number>> series = chart.getData();
+            for(XYChart.Series<Number, Number> s: series)
+                setChartScale(s, scaleX, scaleY);
+        }
+
         // データ保存
         ObservableList<XYChart.Series<Number, Number>> tmp = null;
         if(takeover && chart != null)
@@ -198,6 +213,26 @@ public class MainUIController implements Initializable {
         XYChart.Series<Number, Number> series = Convert.objects2Series(objects);
         chart.getData().clear();
         chart.getData().addAll(series);
+    }
+
+    /**
+     * グラフ表示のスケーリングを行う
+     *
+     * @param series スケーリング対象となるデータ群
+     * @param rateX X方向の拡大率
+     * @param rateY Y方向の拡大率
+     */
+    private void setChartScale(XYChart.Series<Number, Number> series, double rateX, double rateY) {
+        if(chart == null) return;
+        if(Settings.ViewRatioNormalize) {    // 表示比正規化
+            rateX = (rateX+rateY)/2.0;
+            rateY = rateX;
+        }
+        ObservableList<XYChart.Data<Number, Number>> data = series.getData();
+        for(XYChart.Data<Number, Number> d: data) {
+            d.getNode().setScaleX(rateX*Settings.RockMagnification);
+            d.getNode().setScaleY(rateY*Settings.RockMagnification);
+        }
     }
 
 }
