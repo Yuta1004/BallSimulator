@@ -29,8 +29,8 @@ public class SettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         // 初期化(UI部品)
         stepVal.setText(""+Settings.StepVal);
-        objMagValue.setValue(Settings.RockMagnification);
-        objMagValueV.setText("x "+Settings.RockMagnification);
+        objMagValue.setValue(Settings.ObjMagnification);
+        objMagValueV.setText("x "+Settings.ObjMagnification);
         axisNormalize.setSelected(Settings.AxisNormalize);
         viewRatioNormalize.setSelected(Settings.ViewRatioNormalize);
 
@@ -38,7 +38,7 @@ public class SettingsController implements Initializable {
         objMagValue.valueProperty().addListener((obs, oldVal, newVal) -> {
             double val = Math.round(newVal.doubleValue()*10)/10.0;
             objMagValueV.setText("x "+val);
-            Settings.RockMagnification = val;
+            Settings.ObjMagnification = val;
         });
         // 表示縦横比正規化
         viewRatioNormalize.setOnAction(event -> {

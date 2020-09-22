@@ -243,8 +243,8 @@ public class MainUIController implements Initializable {
         }
         ObservableList<XYChart.Data<Number, Number>> data = series.getData();
         for(XYChart.Data<Number, Number> d: data) {
-            d.getNode().setScaleX(rateX*Settings.RockMagnification);
-            d.getNode().setScaleY(rateY*Settings.RockMagnification);
+            d.getNode().setScaleX(rateX*Settings.ObjMagnification);
+            d.getNode().setScaleY(rateY*Settings.ObjMagnification);
         }
     }
 
