@@ -41,7 +41,7 @@ public class MainUIController implements Initializable {
     @FXML
     private Label speedVal, clockVal;
     @FXML
-    private Button play, skip, skip10, init, reset, openSettings;
+    private Button play, skip, skip10, init, reset, addObj, openSettings;
     @FXML
     private TextField widthF, widthT, heightF, heightT;
 
@@ -73,11 +73,6 @@ public class MainUIController implements Initializable {
 
         // シミュレータ初期化
         simulator = new Simulator();
-        // for debug
-        Ball ball = new Ball(5.0, 5.0, 1.0, 1.0);
-        ball.giveVelocity(1.0, 1.0);
-        simulator.addObject(ball);
-        plotData(simulator.getObjectList().values());
     }
 
     /* UI初期化 */
@@ -120,6 +115,9 @@ public class MainUIController implements Initializable {
             plotData(simulator.getObjectList().values());
             clock.tick(100);
             clockVal.setText(clock.toString());
+        });
+        addObj.setOnAction(event -> {
+            addObject();
         });
         openSettings.setOnAction(event -> {
             tl.stop();
@@ -258,6 +256,25 @@ public class MainUIController implements Initializable {
         double baseSize = widthTVal-widthFVal;
         heightTVal = heightFVal+baseSize*aratio;
         heightT.setDisable(Settings.AxisNormalize);
+    }
+
+    /* オブジェクトの追加処理を行う */
+    private void addObject() {
+        // 属性入力ウィンドウ立ち上げ
+        AddObjectController controller = new AddObjectController();
+        Stage stage = JavaFXStage.genStage("AddObject", "/fxml/AddObj.fxml", controller, resource);
+        stage.showAndWait();
+
+        // 入力内容確認
+        if(!controller.inputOK())
+            return;
+        AddObjectController c = controller;
+        Ball ball = new Ball(c.x, c.y, c.diameter, 1.0);
+        ball.giveVelocity(c.v0x, c.v0y);
+        ball.force(c.ax, c.ay);
+        simulator.addObject(c.id, ball);
+        plotData(simulator.getObjectList().values());
+        initChart(true);
     }
 
 }
