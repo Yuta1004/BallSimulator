@@ -18,15 +18,12 @@ import javafx.util.Duration;
 import javafx.collections.ObservableList;
 
 import java.net.URL;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 import util.Clock;
 import util.Parse;
-import util.Convert;
 import util.JavaFXStage;
 import data.Settings;
-import object.SimulatableObject;
 import simulator.Simulator;
 
 import object.Ball;  // for debug
@@ -93,7 +90,7 @@ public class MainUIController implements Initializable {
             play.setText("▷");
             clock.set(0, 0, 0, 0);
             clockVal.setText(clock.toString());
-            plotData(simulator.getObjectList().values());
+            plotData();
         });
         play.setOnAction(event -> {
             if(tl.getStatus().equals(Animation.Status.RUNNING)) {
@@ -106,13 +103,13 @@ public class MainUIController implements Initializable {
         });
         skip.setOnAction(event -> {
             simulator.step(1);
-            plotData(simulator.getObjectList().values());
+            plotData();
             clock.tick(10);
             clockVal.setText(clock.toString());
         });
         skip10.setOnAction(event -> {
             simulator.step(10);
-            plotData(simulator.getObjectList().values());
+            plotData();
             clock.tick(100);
             clockVal.setText(clock.toString());
         });
@@ -210,7 +207,7 @@ public class MainUIController implements Initializable {
             clock.tick(Settings.StepVal);
             simulator.step(Settings.StepVal/10);
             clockVal.setText(clock.toString());
-            plotData(simulator.getObjectList().values());
+            plotData();
         });
         tl.stop();
         tl = new Timeline(kf);
@@ -220,8 +217,8 @@ public class MainUIController implements Initializable {
 
     /* ScatterChartにデータをセットする */
     @SuppressWarnings("unchecked")
-    private void plotData(Collection<SimulatableObject> objects) {
-        XYChart.Series<Number, Number> series = Convert.objects2Series(objects);
+    private void plotData() {
+        XYChart.Series<Number, Number> series = simulator.getSeries();
         chart.getData().clear();
         chart.getData().addAll(series);
     }
@@ -273,8 +270,7 @@ public class MainUIController implements Initializable {
         ball.giveVelocity(c.v0x, c.v0y);
         ball.force(c.ax, c.ay);
         simulator.addObject(c.id, ball);
-        plotData(simulator.getObjectList().values());
-        initChart(true);
+        plotData();
     }
 
 }
