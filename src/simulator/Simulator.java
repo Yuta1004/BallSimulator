@@ -25,6 +25,13 @@ public class Simulator {
         }
     }
 
+    /* リセット */
+    public void reset() {
+        for(SimulatableObject obj: objectList.values()) {
+            obj.reset();
+        }
+    }
+
     /* オブジェクトリストを返す */
     public HashMap<String, SimulatableObject> getObjectList() {
         return objectList;
