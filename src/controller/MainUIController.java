@@ -148,7 +148,8 @@ public class MainUIController implements Initializable {
     /* ScatterChart初期化 */
     private void initChart(boolean takeover) {
         // NumberAxis初期化
-        // axisNormalize();
+        if(Settings.AxisNormalize)
+            axisNormalize();
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("X(m)");
@@ -233,6 +234,18 @@ public class MainUIController implements Initializable {
             d.getNode().setScaleX(rateX*Settings.RockMagnification);
             d.getNode().setScaleY(rateY*Settings.RockMagnification);
         }
+    }
+
+    /* 軸メモリ間隔の正規化を行う */
+    private void axisNormalize() {
+        if(chart == null)
+            return;
+        double waSize = ((Number)chart.getXAxis().getWidth()).doubleValue();
+        double haSize = ((Number)chart.getYAxis().getHeight()).doubleValue();
+        double aratio = haSize/waSize;
+        double baseSize = widthTVal-widthFVal;
+        heightTVal = heightFVal+baseSize*aratio;
+        heightT.setDisable(Settings.AxisNormalize);
     }
 
 }
