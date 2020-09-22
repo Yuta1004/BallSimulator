@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 import util.Clock;
 import util.Parse;
 import util.Convert;
+import util.JavaFXStage;
 import object.SimulatableObject;
 import simulator.Simulator;
 
@@ -36,7 +38,7 @@ public class MainUIController implements Initializable {
     @FXML
     private Label speedVal, clockVal;
     @FXML
-    private Button play, init, reset;
+    private Button play, init, reset, openSettings;
     @FXML
     private TextField widthF, widthT, heightF, heightT;
 
@@ -48,6 +50,9 @@ public class MainUIController implements Initializable {
     private Simulator simulator;
     private Timeline tl = new Timeline();
 
+    // その他
+    ResourceBundle resource;
+
     /* 初期化 */
     @Override
     public void initialize(URL location, ResourceBundle resource) {
@@ -57,6 +62,7 @@ public class MainUIController implements Initializable {
         widthTVal = 25;
         heightTVal = 10;
         widthFVal = heightFVal = 0;
+        this.resource = resource;
 
         // UI部品など初期化
         initUI();
@@ -95,6 +101,14 @@ public class MainUIController implements Initializable {
                 play.setText("□");
                 initTimeLine();
             }
+        });
+        openSettings.setOnAction(event -> {
+            tl.stop();
+            play.setText("▷");
+            SettingsController controller = new SettingsController();
+            Stage stage = JavaFXStage.genStage("Settings", "/fxml/Settings.fxml", controller, resource);
+            stage.showAndWait();
+            initChart(true);
         });
 
         // UIイベント<スライダー>
