@@ -25,6 +25,7 @@ import util.Clock;
 import util.Parse;
 import util.Convert;
 import util.JavaFXStage;
+import data.Settings;
 import object.SimulatableObject;
 import simulator.Simulator;
 
@@ -180,8 +181,8 @@ public class MainUIController implements Initializable {
     private void initTimeLine() {
         Duration d = new Duration(500/updateSpeed);
         KeyFrame kf = new KeyFrame(d, event -> {
-            clock.tick(10);     // 10ms
-            simulator.step(1);  // 10ms
+            clock.tick(Settings.StepVal);
+            simulator.step(Settings.StepVal/10);
             clockVal.setText(clock.toString());
             plotData(simulator.getObjectList().values());
         });
