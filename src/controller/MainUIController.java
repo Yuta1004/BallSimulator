@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import util.Clock;
 import util.Parse;
 import util.Convert;
 import object.SimulatableObject;
@@ -33,7 +34,7 @@ public class MainUIController implements Initializable {
     @FXML
     private Slider speedSlider;
     @FXML
-    private Label speedVal;
+    private Label speedVal, clockVal;
     @FXML
     private Button play;
     @FXML
@@ -43,13 +44,15 @@ public class MainUIController implements Initializable {
     private ScatterChart<Number, Number> chart;
     private double updateSpeed;
     private double widthFVal, widthTVal, heightFVal, heightTVal;
-    private Timeline tl = new Timeline();
+    private Clock clock;
     private Simulator simulator;
+    private Timeline tl = new Timeline();
 
     /* 初期化 */
     @Override
     public void initialize(URL location, ResourceBundle resource) {
         // 各種値初期化
+        clock = new Clock(0, 0, 0, 0);
         updateSpeed = 1.0;
         widthTVal = 25;
         heightTVal = 10;
@@ -147,7 +150,9 @@ public class MainUIController implements Initializable {
     private void initTimeLine() {
         Duration d = new Duration(500/updateSpeed);
         KeyFrame kf = new KeyFrame(d, event -> {
-            simulator.step(1);
+            clock.tick(10);     // 10ms
+            simulator.step(1);  // 10ms
+            clockVal.setText(clock.toString());
             plotData(simulator.getObjectList().values());
         });
         tl.stop();
