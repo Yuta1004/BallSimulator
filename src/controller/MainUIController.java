@@ -36,7 +36,7 @@ public class MainUIController implements Initializable {
     @FXML
     private Label speedVal, clockVal;
     @FXML
-    private Button play;
+    private Button play, init, reset;
     @FXML
     private TextField widthF, widthT, heightF, heightT;
 
@@ -70,6 +70,23 @@ public class MainUIController implements Initializable {
     /* UI初期化 */
     private void initUI() {
         // UIイベント<ボタン>
+        init.setOnAction(event -> {
+            tl.stop();
+            initChart(false);
+            play.setText("▷");
+            clock.set(0, 0, 0, 0);
+            clockVal.setText(clock.toString());
+            simulator = new Simulator();
+        });
+        reset.setOnAction(event -> {
+            tl.stop();
+            initChart(false);
+            simulator.reset();
+            play.setText("▷");
+            clock.set(0, 0, 0, 0);
+            clockVal.setText(clock.toString());
+            plotData(simulator.getObjectList().values());
+        });
         play.setOnAction(event -> {
             if(tl.getStatus().equals(Animation.Status.RUNNING)) {
                 play.setText("▷");
