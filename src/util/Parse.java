@@ -10,7 +10,7 @@ public class Parse {
      * @param faultVal 失敗時に返す値
      * @return Double
      */
-    public static double parseDouble(String strVal, double faultVal) {
+    public static double toDouble(String strVal, double faultVal) {
         try {
             return Double.parseDouble(strVal);
         } catch (Exception e) {

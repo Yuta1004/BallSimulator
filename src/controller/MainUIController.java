@@ -79,19 +79,19 @@ public class MainUIController implements Initializable {
         // UIイベント<テキスト入力(1行)>
         widthF.textProperty().addListener((obs, oldText, newText) -> {
             Double.parseDouble(newText);
-            widthFVal = Parse.parseDouble(newText, 0.0);
+            widthFVal = Parse.toDouble(newText, 0.0);
             initChart(true);
         });
         widthT.textProperty().addListener((obs, oldText, newText) -> {
-            widthTVal = Parse.parseDouble(newText, 0.0);
+            widthTVal = Parse.toDouble(newText, 0.0);
             initChart(true);
         });
         heightF.textProperty().addListener((obs, oldText, newText) -> {
-            heightFVal = Parse.parseDouble(newText, 0.0);
+            heightFVal = Parse.toDouble(newText, 0.0);
             initChart(true);
         });
         heightT.textProperty().addListener((obs, oldText, newText) -> {
-            heightTVal = Parse.parseDouble(newText, 0.0);
+            heightTVal = Parse.toDouble(newText, 0.0);
             initChart(true);
         });
     }
