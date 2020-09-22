@@ -55,7 +55,8 @@ public class AddObjectController implements Initializable {
         color = colorPicker.getValue().toString();
 
         // その他属性
-        inpOk = (x = Parse.toDouble(xTf.getText(), Double.MIN_VALUE)) != Double.MIN_VALUE
+        inpOk = !id.equals("")
+             && (x = Parse.toDouble(xTf.getText(), Double.MIN_VALUE)) != Double.MIN_VALUE
              && (y = Parse.toDouble(yTf.getText(), Double.MIN_VALUE)) != Double.MIN_VALUE
              && (v0x = Parse.toDouble(v0xTf.getText(), Double.MIN_VALUE)) != Double.MIN_VALUE
              && (v0y = Parse.toDouble(v0yTf.getText(), Double.MIN_VALUE)) != Double.MIN_VALUE
