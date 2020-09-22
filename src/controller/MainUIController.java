@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 
 import util.Parse;
 import util.Convert;
-import object.Ball;
 import object.SimulatableObject;
 import simulator.Simulator;
 
@@ -62,9 +61,6 @@ public class MainUIController implements Initializable {
 
         // シミュレータ初期化
         simulator = new Simulator();
-        simulator.addObject(new Ball(0, 0, 1.0, 1.0));
-        simulator.addObject(new Ball(2, 2, 1.0, 1.0));
-        simulator.addObject(new Ball(4, 4, 1.0, 1.0));
         plotData(simulator.getObjectList().values());
     }
 
@@ -151,7 +147,8 @@ public class MainUIController implements Initializable {
     private void initTimeLine() {
         Duration d = new Duration(500/updateSpeed);
         KeyFrame kf = new KeyFrame(d, event -> {
-            System.out.println("Tick");
+            simulator.step(1);
+            plotData(simulator.getObjectList().values());
         });
         tl.stop();
         tl = new Timeline(kf);
