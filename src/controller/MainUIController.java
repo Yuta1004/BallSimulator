@@ -41,7 +41,7 @@ public class MainUIController implements Initializable {
     @FXML
     private Label speedVal, clockVal;
     @FXML
-    private Button play, init, reset, openSettings;
+    private Button play, skip, skip10, init, reset, openSettings;
     @FXML
     private TextField widthF, widthT, heightF, heightT;
 
@@ -74,9 +74,9 @@ public class MainUIController implements Initializable {
         // シミュレータ初期化
         simulator = new Simulator();
         // for debug
-        // Ball ball = new Ball(5.0, 5.0, 1.0, 1.0);
-        // ball.giveVelocity(1.0, 1.0);
-        // simulator.addObject(ball);
+        Ball ball = new Ball(5.0, 5.0, 1.0, 1.0);
+        ball.giveVelocity(1.0, 1.0);
+        simulator.addObject(ball);
         plotData(simulator.getObjectList().values());
     }
 
@@ -108,6 +108,18 @@ public class MainUIController implements Initializable {
                 play.setText("□");
                 initTimeLine();
             }
+        });
+        skip.setOnAction(event -> {
+            simulator.step(1);
+            plotData(simulator.getObjectList().values());
+            clock.tick(10);
+            clockVal.setText(clock.toString());
+        });
+        skip10.setOnAction(event -> {
+            simulator.step(10);
+            plotData(simulator.getObjectList().values());
+            clock.tick(100);
+            clockVal.setText(clock.toString());
         });
         openSettings.setOnAction(event -> {
             tl.stop();
