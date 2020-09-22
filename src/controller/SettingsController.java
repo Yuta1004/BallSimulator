@@ -56,7 +56,7 @@ public class SettingsController implements Initializable {
         });
         // 1ステップの間隔
         stepVal.textProperty().addListener((obs, oldVal, newVal) -> {
-            Settings.StepVal = Parse.toDouble(newVal, 0.0);
+            Settings.StepVal = (int)Parse.toDouble(newVal, 0.0);
         });
     }
 

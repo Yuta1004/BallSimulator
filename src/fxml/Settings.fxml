@@ -55,10 +55,10 @@
                                                 <Font size="20.0" />
                                              </font>
                                           </Label>
-                                          <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
+                                          <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <TextField fx:id="stepVal" prefWidth="50.0" text="0.1" />
-                                                <Label text="s/step" />
+                                                <TextField fx:id="stepVal" prefWidth="50.0" text="100" />
+                                                <Label text="ms/step" />
                                              </children>
                                           </HBox>
                                        </children>
