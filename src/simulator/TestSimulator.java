@@ -26,10 +26,8 @@ public class TestSimulator extends Test {
     /* オブジェクト追加テスト */
     public void addObjectTest() {
         Simulator simulator = new Simulator();
-        SimulatableObject ball1 = new Ball(0.0, 0.0, 1.0, 1.0);
-        SimulatableObject ball2 = new Ball(2.0, 2.0, 1.0, 1.0);
-        simulator.addObject(ball1);
-        simulator.addObject("test", ball2);
+        SimulatableObject ball = new Ball(2.0, 2.0, 1.0, 1.0);
+        simulator.addObject("test", ball);
         isTrue(true);
     }
 
@@ -37,7 +35,7 @@ public class TestSimulator extends Test {
     public void removeObjectTest() {
         Simulator simulator = new Simulator();
         SimulatableObject ball = new Ball(0.0, 0.0, 1.0, 1.0);
-        simulator.addObject(ball);
+        simulator.addObject("id", ball);
         simulator.removeObject("aaa");
         simulator.removeObject("0");
         isTrue(true);
