@@ -27,7 +27,7 @@ public class TestSimulator extends Test {
     public void addObjectTest() {
         Simulator simulator = new Simulator();
         SimulatableObject ball = new Ball(2.0, 2.0, 1.0, 1.0);
-        simulator.addObject("test", ball);
+        simulator.addObject("test", "0xa52a2aff", ball);
         isTrue(true);
     }
 
@@ -35,7 +35,7 @@ public class TestSimulator extends Test {
     public void removeObjectTest() {
         Simulator simulator = new Simulator();
         SimulatableObject ball = new Ball(0.0, 0.0, 1.0, 1.0);
-        simulator.addObject("id", ball);
+        simulator.addObject("id", "0xa52a2aff", ball);
         simulator.removeObject("aaa");
         simulator.removeObject("0");
         isTrue(true);

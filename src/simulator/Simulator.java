@@ -12,10 +12,12 @@ import object.SimulatableObject;
 public class Simulator {
 
     // オブジェクト管理用
+    private HashMap<String, Color> colorTable;
     private HashMap<String, SimulatableObject> objects;
 
     /* コンストラクタ */
     public Simulator() {
+        colorTable = new HashMap<String, Color>();
         objects = new HashMap<String, SimulatableObject>();
     }
 
@@ -39,10 +41,12 @@ public class Simulator {
     /**
      * オブジェクト追加
      * @param id ID
+     * @param color 色情報 (JavaFX.Colorで使用可能なもの ex.0xa52a2aff)
      * @param obj 追加オブジェクト
      */
-    public void addObject(String id, SimulatableObject obj) {
+    public void addObject(String id, String color, SimulatableObject obj) {
         objects.put(id, obj);
+        colorTable.put(id, Color.valueOf(color));
     }
 
     /**
