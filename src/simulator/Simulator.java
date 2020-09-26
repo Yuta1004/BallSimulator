@@ -56,6 +56,7 @@ public class Simulator {
     public void removeObject(String id) {
         if(objects.get(id) == null) { return; }
         objects.remove(id);
+        colorTable.remove(id);
     }
 
     /* オブジェクトリストを返す */
