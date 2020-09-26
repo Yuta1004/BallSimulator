@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
@@ -41,6 +42,8 @@ public class MainUIController implements Initializable {
     private Button play, skip, skip10, init, reset, addObj, openSettings;
     @FXML
     private TextField widthF, widthT, heightF, heightT;
+    @FXML
+    private MenuItem openCredit;
 
     // 描画用
     private ScatterChart<Number, Number> chart;
@@ -149,6 +152,11 @@ public class MainUIController implements Initializable {
         heightT.textProperty().addListener((obs, oldText, newText) -> {
             heightTVal = Parse.toDouble(newText, 0.0);
             initChart(true);
+        });
+
+        // UIイベント<メニューアイテム>
+        openCredit.setOnAction(event -> {
+            JavaFXStage.genStage("Credit", "/fxml/Credit.fxml", null, resource).showAndWait();
         });
     }
 
