@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -11,6 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.MenuItem;
+import javafx.scene.paint.Color;
 import javafx.scene.layout.AnchorPane;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
@@ -73,6 +75,12 @@ public class MainUIController implements Initializable {
 
         // シミュレータ初期化
         simulator = new Simulator();
+
+        // Splash表示
+        Stage splash = JavaFXStage.genStage("", "/fxml/Credit.fxml", new SplashController(), resource);
+        splash.getScene().setFill(Color.TRANSPARENT);
+        splash.initStyle(StageStyle.TRANSPARENT);
+        splash.showAndWait();
     }
 
     /* UI初期化 */
