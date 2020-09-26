@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import data.ID;
 import util.Parse;
 
 public class AddObjectController implements Initializable {
@@ -32,6 +33,7 @@ public class AddObjectController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resource) {
+        idTf.setText("object"+ID.inc());
         colorPicker.setValue(Color.BROWN);
         done.setOnAction(event -> {
             validateInput();
