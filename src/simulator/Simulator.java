@@ -67,7 +67,9 @@ public class Simulator {
         return objects;
     }
 
-    /* オブジェクト描画のためのXYChart.Seriesを返す */
+    /** オブジェクト描画のためのXYChart.Seriesを返す
+     * @return XYChart.Series<Number, Number>
+     */
     public XYChart.Series<Number, Number> getSeries() {
         XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
         for(String id: objects.keySet()) {
