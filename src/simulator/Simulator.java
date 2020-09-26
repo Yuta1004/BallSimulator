@@ -7,6 +7,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.chart.XYChart;
 
 import object.Pos;
+import object.Ball;
+import object.Wall;
 import object.SimulatableObject;
 
 public class Simulator {
@@ -70,12 +72,32 @@ public class Simulator {
         XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
         for(String id: objects.keySet()) {
             SimulatableObject obj = objects.get(id);
-            Pos pos = obj.getPos();
-            XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(pos.getX(), pos.getY());
-            data.setNode(new Circle(10.0, colorTable.get(id)));
-            series.getData().add(data);
+            series.getData().add(getOKNode(id, obj));
         }
         return series;
+    }
+
+    /** オブジェクトに対して適切なNode設定を行ったXYChat.Dataを返す
+     * @param id オブジェクトID
+     * @param obj SimulatableObject
+     * @return XYChart.Data<Number, Number>
+     */
+    private XYChart.Data<Number, Number> getOKNode(String id, SimulatableObject obj) {
+        // Data準備
+        Pos pos = obj.getPos();
+        XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(pos.getX(), pos.getY());
+
+        // Ball
+        if(obj instanceof Ball) {
+            Ball ball = (Ball)obj;
+            data.setNode(new Circle(ball.r*15, colorTable.get(id)));
+        }
+        // Wall
+        if(obj instanceof Wall) {
+            // do nothing
+        }
+
+        return data;
     }
 
 }
