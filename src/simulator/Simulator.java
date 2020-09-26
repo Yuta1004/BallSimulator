@@ -45,6 +45,7 @@ public class Simulator {
      * @param obj 追加オブジェクト
      */
     public void addObject(String id, String color, SimulatableObject obj) {
+        if(objects.get(id) != null) { return; }
         objects.put(id, obj);
         colorTable.put(id, Color.valueOf(color));
     }
