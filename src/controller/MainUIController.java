@@ -266,9 +266,7 @@ public class MainUIController implements Initializable {
         if(!controller.inputOK())
             return;
         AddObjectController c = controller;
-        Ball ball = new Ball(c.x, c.y, c.diameter, 1.0);
-        ball.giveVelocity(c.v0x, c.v0y);
-        ball.force(c.ax, c.ay);
+        Ball ball = new Ball(c.x, c.y, c.diameter, 1.0, c.v0x, c.v0y, c.ax, c.ay);
         simulator.addObject(c.id, c.color, ball);
         plotData();
     }
