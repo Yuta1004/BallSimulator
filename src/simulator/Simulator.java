@@ -66,11 +66,11 @@ public class Simulator {
     /* オブジェクト描画のためのXYChart.Seriesを返す */
     public XYChart.Series<Number, Number> getSeries() {
         XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-        for(SimulatableObject obj: objects.values()) {
+        for(String id: objects.keySet()) {
+            SimulatableObject obj = objects.get(id);
             Pos pos = obj.getPos();
             XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(pos.getX(), pos.getY());
-            Color color = Color.web("#000");
-            data.setNode(new Circle(10.0, color));
+            data.setNode(new Circle(10.0, colorTable.get(id)));
             series.getData().add(data);
         }
         return series;
