@@ -11,6 +11,7 @@ public class TestBall extends Test {
     public void test() {
         initializeTest();
         stepTest();
+        resetTest();
     }
 
     /* 初期化テスト */
@@ -31,6 +32,23 @@ public class TestBall extends Test {
         ball = new Ball(0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
         ball.giveVelocity(10.0, 0);
         ball.force(10.0, 0);
+        for(int cnt = 1; cnt <= 10; ++ cnt) {
+            ball.step(100);
+            isEqual(ball.getPos(), new Pos(10*cnt + 0.5*10*cnt*cnt, 0));
+        }
+    }
+
+    /* resetのテスト */
+    private void resetTest() {
+        // 状況: 横向き10m/sで移動している質量1.0gの球が座標(0,0)に来たときに横向き10Nの力を与える
+        Ball ball = new Ball(0.0, 0.0, 1.0, 1.0, 10.0, 0.0, 10.0, 0.0);
+        for(int cnt = 1; cnt <= 10; ++ cnt) {
+            ball.step(100);
+            isEqual(ball.getPos(), new Pos(10*cnt + 0.5*10*cnt*cnt, 0));
+        }
+
+        // リセット後に同じ挙動を示すかチェック
+        ball.reset();
         for(int cnt = 1; cnt <= 10; ++ cnt) {
             ball.step(100);
             isEqual(ball.getPos(), new Pos(10*cnt + 0.5*10*cnt*cnt, 0));
