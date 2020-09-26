@@ -55,7 +55,7 @@ public class Simulator {
     }
 
     /* オブジェクトリストを返す */
-    public HashMap<String, SimulatableObject> getObjectList() {
+    public HashMap<String, SimulatableObject> getObjects() {
         return objects;
     }
 
