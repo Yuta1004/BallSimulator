@@ -235,7 +235,7 @@ public class MainUIController implements Initializable {
     @SuppressWarnings("unchecked")
     private void plotData() {
         XYChart.Series<Number, Number> series = simulator.getSeries();
-        chart.getData().clear();
+        // chart.getData().clear();
         chart.getData().addAll(series);
     }
 
