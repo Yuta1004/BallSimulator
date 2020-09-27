@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.Node;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -234,9 +235,18 @@ public class MainUIController implements Initializable {
     /* ScatterChartにデータをセットする */
     @SuppressWarnings("unchecked")
     private void plotData() {
-        XYChart.Series<Number, Number> series = simulator.getSeries();
-        // chart.getData().clear();
-        chart.getData().addAll(series);
+        // 旧データの表示サイズを変更する(軌跡表示)
+        for(XYChart.Series<Number, Number> series: chart.getData()) {
+            for(XYChart.Data<Number, Number> data: series.getData()) {
+                Node node = data.getNode();
+                node.setScaleX(0.75);
+                node.setScaleY(0.75);
+                node.setOpacity(0.5);
+            }
+        }
+
+        // 新規データ追加
+        chart.getData().addAll(simulator.getSeries());
     }
 
     /**
