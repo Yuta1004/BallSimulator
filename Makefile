@@ -18,8 +18,8 @@ run: Main.class
 	cp -r src/fxml bin
 	$(JAVA) $(JAVA_OPTS) Main $(ARGS)
 
-dist-darwin: clean
-	$(call gen-dist,darwin,java)
+dist-macos: clean
+	$(call gen-dist,macos,java)
 
 dist-win: clean
 	$(call gen-dist,win,java.exe)
@@ -45,17 +45,26 @@ define gen-dist
 	# ビルド
 	$(JAVAC) $(JAVAC_OPTS) src/Main.java
 	cp -r src/fxml .
-	$(JAR) cvfm dist/BallSimulator-$1.jar MANIFEST.MF -C bin . fxml
+	$(JAR) cvfm dist/BallSimulator.jar MANIFEST.MF -C bin . fxml
 	rm -rf fxml
 
 	# JRE生成
 	$(JLINK) $(JLINK_OPTS):$(JMODS_PATH) --output dist/runtime-$1
 
-	# Makefile生成
-	echo "$1:\n\tchmod +x runtime-$1/bin/*\n\truntime-$1/bin/$2 -jar BallSimulator-$1.jar\n\n" > dist/Makefile
+	# Launcher生成
+	if [ $1 = "win" ]; then \
+		echo ".\\\runtime-$1\\\bin\\\java.exe -jar BallSimulator.jar" > dist/run.bat && \
+		chmod +x dist/run.bat;\
+	else \
+		echo "./runtime-$1/bin/java -jar BallSimulator.jar" > dist/run.sh && \
+		chmod +x dist/run.sh;\
+	fi
+
+	# LICENCEコピー
+	cp LICENCE dist/
 
 	# README生成
-	echo "# BallSimulator ($1)\n\n## HowToUse\nrun \`make\` or launcher(.app, .sh, .ps1)" > dist/README.md
+	echo "# BallSimulator ($1)\n\n## HowToUse\nrun the launcher(.bat, .sh)" > dist/README.md
 
 	# .class削除
 	rm -rf bin
